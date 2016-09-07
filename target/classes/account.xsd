@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ecsdemo.io/accounts-web-service"
+           targetNamespace="http://ecsdemo.io/accounts-web-service" elementFormDefault="qualified">
+
+    <xs:element name="getAccountRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="phone" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAccountResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="account" type="tns:account"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="account">
+        <xs:sequence>
+            <xs:element name="number" type="xs:string"/>
+            <xs:element name="phone" type="xs:string"/>
+            <xs:element name="phoneType" type="tns:phoneType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="phoneType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HOME"/>
+            <xs:enumeration value="CELL"/>
+            <xs:enumeration value="BUS"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
